@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>GBC LTD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="GBC Web Site" />
+    <meta name="keywords" content="GBC Web Site" />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style_home.css" />
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js">
+    </script>
+
+    <script type="text/javascript" src="js/jquery.appear.js">
+    </script>
+
+</head>
+
+<body>
+    <header id="header" class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="/"><img src="img/logo.png" class="log-adj animated fadeInLeft" /></a>
+                </div>
+
+                <div class="col-lg-6 ml-auto animated fadeInRight">
+                    <nav>
+                        <ul class="menu d-flex justify-content-center">
+                        <li class="menu__item">
+                                <a href="/">
+                                    Home
+                                </a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="h#" target="_blank">
+                                    Blog
+                                </a>
+                            </li>
+               				<li class="menu__item">
+               				<a href="/me" th:text="${username}"></a>
+               					<br>
+                                <form action="/logout" method="GET">
+                					<input type="submit" name="button1" value="Log Out" />
+               					</form>
+                            </li>
+                            <li class="menu__item">
+								<form action="/addImg" method="post" enctype="multipart/form-data">  
+									Фотка для загрузки:<input type="file" name="fname"/><br/>
+									<input type="submit" value="Загрузить"/>
+								</form>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+       
+        <br>
+        <br>
+        
+        <ul>
+			<li th:each="file : ${files}">
+				<img th:src="${file}"  width=520/>
+			</li>
+		</ul>
+        
+        <br>
+        <br>
+    </header>
+    <footer id="footer" class="footer">
+        <div class="container animated fadeInLeft">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="credits">
+                        <a href="#" target="_blank">199-151 Maiden Ln New York, NY 10038, USA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
